@@ -5,20 +5,21 @@
     <title>Title</title>
 
 </head>
-<body ng-app>
+<body ng-app="myApp">
+<div ng-controller="DashboardCtrl">
+    {{ message }}
 
-<div ng-init="todos = []">
-    <ul>
-        <li ng-repeat="todo in todos track by $index">
-            {{todo}}
-            <span ng-click="todos.splice($index, 1)">&times;</span>
-        </li>
-    </ul>
+<div ng-repeat="(blockName, todoList) in todos">
+    <div>{{blockName}}</div>
+    <div ng-repeat="todo in todoList">
+        {{$parent.$index + 1}}.{{$index + 1}} {{todo}}
+    </div>
+</div>
 </div>
 
-<input type="text" ng-model="newTodo">
-<button ng-click="todos.push(newTodo); newTodo = '';">Create ToDo</button>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="js/core.module.js"></script>
+<script src="js/dashboard.controller.js"></script>
 </body>
 </html>
