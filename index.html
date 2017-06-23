@@ -6,14 +6,16 @@
 
 </head>
 <body ng-app="myApp">
-<div ng-controller="GrandFather">
-    <input type="text" ng-model="userName">
+<div ng-controller="DashboardCtrl">
 
-    <div ng-controller="Father">
-        <button ng-click="run();">Send</button>
-        <div ng-controller="Son">
-        </div>
-    </div>
+    <form action="">
+        <label for="name">User Name</label>
+        <input id="name" type="text"  ng-model="userName">
+        <br>
+        <label for="email">Email</label>
+        <input id="email" type="email" ng-model="userEmail">
+    </form>
+
 </div>
 
 

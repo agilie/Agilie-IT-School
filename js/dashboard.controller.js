@@ -1,27 +1,17 @@
-;(function(){
+;(function () {
+
+    "use strict";
+
     angular
         .module("myApp")
-        .controller("GrandFather", ['$scope', function(something) {
-            something.userName = '';
+        .controller("DashboardCtrl", function ($scope) {
 
-            something.$watch('userName', function (newName) {
-               if (newName.length > 10) {
-                   alert('Your name is to long!');
-               }
+            $scope.$watch('userEmail', function (newName, oldName) {
+                console.log('user is typing his email');
             });
 
-            something.$on('message', function() {
-                alert('Granny got it');
-            });
-        }])
-        .controller("Father", function($scope) {
-            $scope.run = function() {
-                $scope.$broadcast('message');
-            }
-        })
-        .controller("Son", function($scope) {
-            $scope.$on('message', function() {
-                alert('Son got it');
+            $scope.$watchGroup(['userName', 'userEmail'], function (newValues, oldValues) {
+                console.log('user is typing something', newValues, oldValues);
             });
         });
 })();
