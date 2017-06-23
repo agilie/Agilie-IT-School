@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
 </head>
+
 <body ng-app="myApp">
 <div ng-controller="GrandFather">
-    <input type="text" ng-model="userName">
 
     <div ng-controller="Father">
-        <button ng-click="run();">Send</button>
+        <button ng-click="sendUp();">Send Up</button>
+        <button ng-click="sendDown();">Send Down</button>
+        <button ng-click="sendAll();">Send All</button>
+
         <div ng-controller="Son">
         </div>
     </div>
-</div>
 
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script src="js/core.module.js"></script>

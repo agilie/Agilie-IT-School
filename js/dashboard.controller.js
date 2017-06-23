@@ -1,27 +1,36 @@
 ;(function(){
     angular
         .module("myApp")
-        .controller("GrandFather", ['$scope', function(something) {
-            something.userName = '';
 
-            something.$watch('userName', function (newName) {
-               if (newName.length > 10) {
-                   alert('Your name is to long!');
-               }
+        .controller("GrandFather", function($scope, $rootScope) {
+            $scope.$on('message', function(event, data) {
+                alert('Granny got message: ' + data);
             });
-
-            something.$on('message', function() {
-                alert('Granny got it');
+            $rootScope.$on('globalAlarm', function(event, data) {
+                alert('Granny got message over rootScope: ' + data);
             });
-        }])
-        .controller("Father", function($scope) {
-            $scope.run = function() {
-                $scope.$broadcast('message');
-            }
         })
-        .controller("Son", function($scope) {
-            $scope.$on('message', function() {
-                alert('Son got it');
+
+        .controller("Father", function($scope, $rootScope) {
+            $scope.sendUp = function() {
+                $scope.$emit('message', 'Stairway to Heaven');
+            };
+
+            $scope.sendDown = function() {
+                $scope.$broadcast('message', 'Highway to Hell');
+            };
+
+            $scope.sendAll = function() {
+                $rootScope.$emit('globalAlarm', 'Wake up!!!');
+            };
+        })
+
+        .controller("Son", function($scope, $rootScope) {
+            $scope.$on('message', function(event, data) {
+                alert('Son got message: ' + data);
+            });
+            $rootScope.$on('globalAlarm', function(event, data) {
+                alert('Son got message over rootScope: ' + data);
             });
         });
 })();
