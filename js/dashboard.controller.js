@@ -1,27 +1,19 @@
-;(function(){
+;(function () {
     angular
         .module("myApp")
-        .controller("GrandFather", ['$scope', function(something) {
-            something.userName = '';
+        .controller("DashboardCtrl", ['$scope', function (something) {
 
-            something.$watch('userName', function (newName) {
-               if (newName.length > 10) {
-                   alert('Your name is to long!');
-               }
-            });
+            something.message = 'I am a message from Scope';
 
-            something.$on('message', function() {
-                alert('Granny got it');
-            });
         }])
-        .controller("Father", function($scope) {
-            $scope.run = function() {
-                $scope.$broadcast('message');
-            }
-        })
-        .controller("Son", function($scope) {
-            $scope.$on('message', function() {
-                alert('Son got it');
-            });
-        });
+
+        .controller("UserCtrl", UserCtrlFunction);
+
+    UserCtrlFunction.$inject = ['$scope'];
+
+    function UserCtrlFunction(thisShouldBeScope) {
+
+        thisShouldBeScope.message = 'I am another message from Scope';
+    }
+
 })();
