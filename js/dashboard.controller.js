@@ -1,15 +1,27 @@
 ;(function(){
     angular
         .module("myApp")
-        .controller("DashboardCtrl", function($scope) {
+        .controller("GrandFather", ['$scope', function(something) {
+            something.userName = '';
 
-            $scope.message = 'Hello World';
+            something.$watch('userName', function (newName) {
+               if (newName.length > 10) {
+                   alert('Your name is to long!');
+               }
+            });
 
-            $scope.todos = {
-                current: ['Task1', 'Task2', 'Task3'],
-                delayed: ['Task4', 'Task5', 'Task6', 'Task7', 'Task8'],
-                urgent: ['Task9', 'Task10', 'Task11', 'Task12']
-            };
-
+            something.$on('message', function() {
+                alert('Granny got it');
+            });
+        }])
+        .controller("Father", function($scope) {
+            $scope.run = function() {
+                $scope.$broadcast('message');
+            }
+        })
+        .controller("Son", function($scope) {
+            $scope.$on('message', function() {
+                alert('Son got it');
+            });
         });
 })();
