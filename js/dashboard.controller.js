@@ -4,6 +4,7 @@
 
     angular
         .module("myApp")
+
         .controller("DashboardCtrl", function($scope) {
 
             $scope.message = 'Hello World';
@@ -14,5 +15,12 @@
                 urgent: ['Task9', 'Task10', 'Task11', 'Task12']
             };
 
-        });
+        })
+
+        .controller("SomeOtherCtrl", function () {
+
+            var vm = this;
+
+            vm.message = 'Message From Some Other Controller';
+        })
 })();
