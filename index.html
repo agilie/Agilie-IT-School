@@ -6,16 +6,16 @@
 
 </head>
 <body ng-app="myApp">
-<div ng-controller="DashboardCtrl">
+<div ng-controller="ScopeWithoutApply">
+    Delayed Message: {{message}}
+</div>
 
-    <form action="">
-        <label for="name">User Name</label>
-        <input id="name" type="text"  ng-model="userName">
-        <br>
-        <label for="email">Email</label>
-        <input id="email" type="email" ng-model="userEmail">
-    </form>
+<div ng-controller="ScopeWithApply">
+    Delayed Message: {{message}}
+</div>
 
+<div ng-controller="CorrectWay">
+     Delayed Message: {{message}}
 </div>
 
 
