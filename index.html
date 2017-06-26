@@ -10,41 +10,39 @@
 <body ng-app="myApp">
 <div ng-controller="DashboardCtrl as vm">
 
-    <table class="orders">
-        <tr>
-            <th>
-                Date
-                <span class="sortorder"></span>
-            </th>
-            <th>
-                Country
-                <span class="sortorder"></span>
-            </th>
-            <th>
-                Price
-                <span class="sortorder"></span>
-            </th>
-            <th>
-                Status
-                <span class="sortorder"></span>
-            </th>
-            <th>
-                Description
-                <span class="sortorder"></span>
-            </th>
-        </tr>
-        <tr ng-repeat="order in vm.model.orders">
-            <td>{{ order.date }}</td>
-            <td>{{ order.country }}</td>
-            <td>{{ order.price }}</td>
-            <td>{{ order.status }}</td>
-            <td>{{ order.description }}</td>
-        </tr>
-    </table>
+    <div>
+        <h3>Two way binding</h3>
+        <input type="text" ng-model="myModel">
+        <span>{{ myModel }}</span>
+        <br>
+        <button ng-click="myModel = 'Some custom text'"> Set custom value to model </button>
+    </div>
+
+    <div>
+        <h3>I am simple binded</h3>
+        <span ng-bind="vm.model.message"></span>
+        <span ng-bind="vm.model.name"></span>
+    </div>
+
+    <div>
+        <h3>I am template binded</h3>
+        <span ng-bind-template="{{vm.model.message}} {{vm.model.name}}"></span>
+    </div>
+
+    <div>
+        <h3>I am not binded</h3>
+        <span ng-non-bindable>{{vm.model.message}} {{vm.model.name}}</span>
+    </div>
+
+    <div>
+        <h3>I am HTML binded</h3>
+        <span ng-bind-html="vm.model.template"></span>
+    </div>
 </div>
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.6.4/angular-sanitize.js"></script>-->
 <script src="js/core.module.js"></script>
 <script src="js/dashboard.controller.js"></script>
 </body>
