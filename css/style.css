@@ -1,0 +1,22 @@
+.orders {
+    border-collapse: collapse;
+}
+
+.orders th {
+    border-bottom: 1px solid;
+}
+.orders td, .orders th {
+    border-left: 1px solid;
+    padding: 5px 10px;
+    max-width: 200px;
+}
+.orders td:first-child, .orders th:first-child {
+    border-left: none;
+}
+
+.sortorder:after {
+    content: '\25b2';
+}
+.sortorder.reverse:after {
+    content: '\25bc';
+}

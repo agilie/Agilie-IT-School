@@ -4,17 +4,45 @@
     <meta charset="UTF-8">
     <title>Title</title>
 
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body ng-app="myApp" ng-strict-di>
-<div ng-controller="DashboardCtrl">
-    {{ message }}
+
+<body ng-app="myApp">
+<div ng-controller="DashboardCtrl as vm">
+
+    <table class="orders">
+        <tr>
+            <th>
+                Date
+                <span class="sortorder"></span>
+            </th>
+            <th>
+                Country
+                <span class="sortorder"></span>
+            </th>
+            <th>
+                Price
+                <span class="sortorder"></span>
+            </th>
+            <th>
+                Status
+                <span class="sortorder"></span>
+            </th>
+            <th>
+                Description
+                <span class="sortorder"></span>
+            </th>
+        </tr>
+        <tr ng-repeat="order in vm.model.orders">
+            <td>{{ order.date }}</td>
+            <td>{{ order.country }}</td>
+            <td>{{ order.price }}</td>
+            <td>{{ order.status }}</td>
+            <td>{{ order.description }}</td>
+        </tr>
+    </table>
 </div>
-
-<div ng-controller="UserCtrl">
-    {{ message }}
-</div>
-
-
+</body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script src="js/core.module.js"></script>
