@@ -1,6 +1,9 @@
 ;(function () {
+
     'use strict';
-    angular.module('myApp', [])
+
+    angular
+        .module('myApp', [])
         .controller('DashboardCtrl', DashboardCtrl);
 
     function DashboardCtrl() {
