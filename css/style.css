@@ -1,22 +1,16 @@
-.orders {
-    border-collapse: collapse;
+.top-bar {
+    background-color: lightblue;
 }
 
-.orders th {
-    border-bottom: 1px solid;
-}
-.orders td, .orders th {
-    border-left: 1px solid;
-    padding: 5px 10px;
-    max-width: 200px;
-}
-.orders td:first-child, .orders th:first-child {
-    border-left: none;
+.user-data {
+    text-align: right;
+    padding: 10px;
 }
 
-.sortorder:after {
-    content: '\25b2';
+.data-block {
+    margin: 10px;
 }
-.sortorder.reverse:after {
-    content: '\25bc';
+
+input[readonly] {
+    background: lightgray;
 }
