@@ -12,33 +12,33 @@
 
     <table class="orders">
         <tr>
-            <th>
+            <th ng-click="vm.menu.orderBy('date')">
                 Date
-                <span class="sortorder"></span>
+                <span ng-show="vm.model.orderParam == 'date'" class="sortorder" ng-class="{reverse: vm.model.reverse}"></span>
             </th>
-            <th>
+            <th ng-click="vm.menu.orderBy('country')">
                 Country
-                <span class="sortorder"></span>
+                <span ng-show="vm.model.orderParam == 'country'" class="sortorder" ng-class="{reverse: vm.model.reverse}"></span>
             </th>
-            <th>
+            <th ng-click="vm.menu.orderBy('price')">
                 Price
-                <span class="sortorder"></span>
+                <span ng-show="vm.model.orderParam == 'price'" class="sortorder" ng-class="{reverse: vm.model.reverse}"></span>
             </th>
-            <th>
+            <th ng-click="vm.menu.orderBy('status')">
                 Status
-                <span class="sortorder"></span>
+                <span ng-show="vm.model.orderParam == 'status'" class="sortorder" ng-class="{reverse: vm.model.reverse}"></span>
             </th>
-            <th>
+            <th ng-click="vm.menu.orderBy('description')">
                 Description
-                <span class="sortorder"></span>
+                <span ng-show="vm.model.orderParam == 'description'" class="sortorder" ng-class="{reverse: vm.model.reverse}"></span>
             </th>
         </tr>
-        <tr ng-repeat="order in vm.model.orders">
-            <td>{{ order.date }}</td>
+        <tr ng-repeat="order in vm.model.orders | orderBy : vm.model.orderParam : vm.model.reverse ">
+            <td>{{ order.date | date : 'dd.MM.yyyy' }}</td>
             <td>{{ order.country }}</td>
-            <td>{{ order.price }}</td>
-            <td>{{ order.status }}</td>
-            <td>{{ order.description }}</td>
+            <td>{{ order.price | currency : '&pound;' }}</td>
+            <td>{{ order.status | limitTo : 1 | uppercase }}</td>
+            <td>{{ order.description | cut : 10 }}</td>
         </tr>
     </table>
 </div>
@@ -47,5 +47,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script src="js/core.module.js"></script>
 <script src="js/dashboard.controller.js"></script>
+<script src="js/filters/cut.filter.js"></script>
+
 </body>
 </html>

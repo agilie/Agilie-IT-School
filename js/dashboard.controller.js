@@ -17,8 +17,23 @@
                 {date: '2016-06-10T08:26:10Z', country: 'USA', price: 1.9333333333, status: 'pending', description: 'Ad aliquam aut est in recusandae ut velit, voluptate voluptatibus? Accusantium ad commodi dolor dolorem eligendi incidunt ipsa iste nihil quaerat recusandae sit ullam voluptatibus, voluptatum! Aliquid eaque fugiat itaque!'},
                 {date: '2016-06-01T13:24:51Z', country: 'Ukraine', price: 5.43, status: 'closed', description: 'Aut beatae, dicta, dolore doloribus, ducimus eius eveniet exercitationem expedita facilis fugit incidunt ipsam labore laudantium non nulla provident quae reiciendis repellat totam vel? Accusantium deleniti error est fuga hic?'},
                 {date: '2016-02-15T14:39:21Z', country: 'Israel', price: 4, status: 'pending', description: 'Consectetur delectus eveniet, ex laborum minima nesciunt nisi veniam! Asperiores, cumque, sapiente? Accusantium ad, at aut corporis culpa deleniti dignissimos et explicabo inventore, ipsam mollitia quia quibusdam ullam voluptate voluptates!'}
-            ]
+            ],
+            orderParam: 'date',
+            reverse: false
         };
+
+        vm.menu = {
+            orderBy: orderBy
+        };
+
+        function orderBy(param) {
+            if (vm.model.orderParam === param) {
+                vm.model.reverse = !vm.model.reverse;
+            } else {
+                vm.model.reverse = false;
+            }
+            vm.model.orderParam = param;
+        }
     }
 
 })();
