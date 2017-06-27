@@ -10,37 +10,24 @@
 <body ng-app="myApp">
 <div ng-controller="DashboardCtrl as vm">
 
-    <table class="orders">
-        <tr>
-            <th>
-                Date
-                <span class="sortorder"></span>
-            </th>
-            <th>
-                Country
-                <span class="sortorder"></span>
-            </th>
-            <th>
-                Price
-                <span class="sortorder"></span>
-            </th>
-            <th>
-                Status
-                <span class="sortorder"></span>
-            </th>
-            <th>
-                Description
-                <span class="sortorder"></span>
-            </th>
-        </tr>
-        <tr ng-repeat="order in vm.model.orders">
-            <td>{{ order.date }}</td>
-            <td>{{ order.country }}</td>
-            <td>{{ order.price }}</td>
-            <td>{{ order.status }}</td>
-            <td>{{ order.description }}</td>
-        </tr>
-    </table>
+    <!--<form action="" ng-submit="vm.menu.addPost($event)">-->
+        <!--<label for="title"></label>-->
+        <!--<input id="title" type="text" ng-model="vm.model.newPost.title">-->
+
+        <!--<label for="body"></label>-->
+        <!--<input id="body" type="text" ng-model="vm.model.newPost.body">-->
+
+        <!--<input type="submit" value="Create New Post">-->
+    <!--</form>-->
+
+    <ul style="list-style: none;">
+        <li ng-repeat="post in vm.model.posts">
+            <!--<h3>{{ post.title }}</h3>-->
+            <!--<p>{{ post.body }}</p>-->
+            <!--<hr>-->
+        </li>
+    </ul>
+
 </div>
 </body>
 
