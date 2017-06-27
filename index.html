@@ -10,21 +10,21 @@
 <body ng-app="myApp">
 <div ng-controller="DashboardCtrl as vm">
 
-    <!--<form action="" ng-submit="vm.menu.addPost($event)">-->
-        <!--<label for="title"></label>-->
-        <!--<input id="title" type="text" ng-model="vm.model.newPost.title">-->
+    <form action="" ng-submit="vm.menu.addPost($event)">
+        <label for="title"></label>
+        <input id="title" type="text" ng-model="vm.model.newPost.title">
 
-        <!--<label for="body"></label>-->
-        <!--<input id="body" type="text" ng-model="vm.model.newPost.body">-->
+        <label for="body"></label>
+        <input id="body" type="text" ng-model="vm.model.newPost.body">
 
-        <!--<input type="submit" value="Create New Post">-->
-    <!--</form>-->
+        <input type="submit" ng-disabled="vm.model.inProgress" value="Create New Post">
+    </form>
 
     <ul style="list-style: none;">
-        <li ng-repeat="post in vm.model.posts">
-            <!--<h3>{{ post.title }}</h3>-->
-            <!--<p>{{ post.body }}</p>-->
-            <!--<hr>-->
+        <li ng-repeat="post in vm.model.posts | limitTo : 10">
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.body }}</p>
+            <hr>
         </li>
     </ul>
 
