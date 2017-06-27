@@ -10,13 +10,6 @@
 
         let vm = this;
 
-        vm.model = {
-            posts: [],
-        };
-
-        vm.menu = {
-        };
-
         activate();
 
         function activate() {
