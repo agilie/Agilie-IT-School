@@ -6,7 +6,9 @@
         .module('myApp')
         .controller('DashboardCtrl', DashboardCtrl);
 
-    function DashboardCtrl() {
+    DashboardCtrl.$inject = ['$sce'];
+
+    function DashboardCtrl($sce) {
 
         let vm = this;
 
@@ -22,7 +24,7 @@
         vm.model = {
             message: 'Hello',
             name: 'World',
-            template: template
+            template: $sce.trustAsHtml(template)
         };
 
 
