@@ -1,10 +1,12 @@
 angular
     .module("myApp")
-    .factory("User", User);
+    .provider("User", User);
 
-User.$inject = [];
+User.$inject = ['MD5'];
 
-function User() {
+function User(MD5) {
+
+    let size = 20;
 
     let user = {
         data: {
@@ -14,8 +16,18 @@ function User() {
     };
     
     function avatarUrl() {
-        return null;
+        return `https://www.gravatar.com/avatar/${MD5(user.data.email)}?s=${size}`;
     }
 
-    return user;
+    function setSize(newSize) {
+        size = newSize;
+    }
+
+    return {
+        setSize: setSize,
+
+        $get: function() {
+            return user;
+        }
+    };
 }
