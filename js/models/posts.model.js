@@ -7,6 +7,7 @@ Post.$inject = ['$http'];
 function Post($http) {
 
     let post = {
+        token: 'My Token',
         getAll: getAll
     };
 
