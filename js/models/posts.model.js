@@ -1,15 +1,15 @@
 angular
-    .module("ThirdParty")
-    .factory("ThirdPartyPost", ThirdPartyPost);
+    .module("myApp")
+    .factory("Post", Post);
 
-ThirdPartyPost.$inject = ['$http'];
+Post.$inject = ['$http'];
 
-function ThirdPartyPost($http) {
+function Post($http) {
 
     let post = {
         getAll: getAll
     };
-    
+
     function getAll() {
         return $http.get('https://jsonplaceholder.typicode.com/posts')
     }

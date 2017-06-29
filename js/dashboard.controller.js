@@ -6,14 +6,13 @@
         .module('myApp')
         .controller('DashboardCtrl', DashboardCtrl);
 
-    DashboardCtrl.$inject = ['InsiderUser', 'ThirdPartyPost'];
+    DashboardCtrl.$inject = ['Post'];
 
-    function DashboardCtrl(InsiderUser, ThirdPartyPost) {
+    function DashboardCtrl(Post) {
 
         let vm = this;
 
-        InsiderUser.getAll();
-        ThirdPartyPost.getAll();
+        Post.getAll();
     }
 
 })();
