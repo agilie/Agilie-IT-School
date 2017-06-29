@@ -6,14 +6,14 @@
         .module('myApp')
         .controller('DashboardCtrl', DashboardCtrl);
 
-    DashboardCtrl.$inject = ['$http'];
+    DashboardCtrl.$inject = ['Post'];
 
-    function DashboardCtrl($http) {
+    function DashboardCtrl(Post) {
 
         let vm = this;
 
         vm.model = {
-            posts: [],
+            posts: Post.posts,
             newPost: {},
             inProgress: false
         };
@@ -25,22 +25,21 @@
         activate();
 
         function activate() {
-            $http({
-                method: "GET",
-                url: "https://jsonplaceholder.typicode.com/posts"
-            }).then(
-                (response) => vm.model.posts = response.data,
-                (response) => console.log('Something bad happened: ' + response.data)
-            );
+            // Post.getAll().then(
+            //     (response) => vm.model.posts = response.data,
+            //     (response) => console.log('Something bad happened: ' + response.data)
+            // );
         }
 
         function addPost(event) {
             if (vm.model.inProgress) {
                 return;
             }
+
             vm.model.inProgress = true;
             event.preventDefault();
-            $http.post("https://jsonplaceholder.typicode.com/posts", vm.model.newPost)
+
+            Post.create(vm.model.newPost)
                 .then((response) => {
                     vm.model.posts = [vm.model.newPost, ...vm.model.posts];
                     vm.model.newPost = {};
