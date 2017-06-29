@@ -2,8 +2,11 @@
 
     'use strict';
 
-    angular
-        .module("myApp", [])
+    angular.module("myApp", ["ThirdParty", "Insiders"]);
+
+    angular.module("ThirdParty", []);
+
+    angular.module("Insiders", []);
 
 })();
 

@@ -6,15 +6,14 @@
         .module('myApp')
         .controller('DashboardCtrl', DashboardCtrl);
 
-    DashboardCtrl.$inject = ['User'];
+    DashboardCtrl.$inject = ['InsiderUser', 'ThirdPartyPost'];
 
-    function DashboardCtrl(User) {
+    function DashboardCtrl(InsiderUser, ThirdPartyPost) {
 
         let vm = this;
 
-        vm.model = {
-            userAvatar: User.avatarUrl()
-        }
+        InsiderUser.getAll();
+        ThirdPartyPost.getAll();
     }
 
 })();
