@@ -9,31 +9,18 @@
 
 <body ng-app="myApp">
 <div ng-controller="DashboardCtrl as vm">
-
-    <form action="" ng-submit="vm.menu.addPost($event)">
-        <label for="title"></label>
-        <input id="title" type="text" ng-model="vm.model.newPost.title">
-
-        <label for="body"></label>
-        <input id="body" type="text" ng-model="vm.model.newPost.body">
-
-        <input type="submit" ng-disabled="vm.model.inProgress" value="Create New Post">
-    </form>
-
-    <ul style="list-style: none;">
-        <li ng-repeat="post in vm.model.posts | limitTo : 10">
-            <h3>{{ post.title }}</h3>
-            <p>{{ post.body }}</p>
-            <hr>
-        </li>
-    </ul>
+    <div>
+        <img src="{{vm.model.userAvatar}}" alt="">
+    </div>
 
 </div>
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>-->
+
 <script src="js/core.module.js"></script>
 <script src="js/dashboard.controller.js"></script>
-<script src="js/models/post.model.js"></script>
+<script src="js/models/user.model.js"></script>
 </body>
 </html>
