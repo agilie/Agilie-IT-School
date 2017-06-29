@@ -8,10 +8,11 @@
 </head>
 
 <body ng-app="myApp">
-<div ng-controller="DashboardCtrl as vm">
+<div ng-controller="DashboardCtrl as vm" ng-cloak>
     <div>
-        <img src="{{vm.model.userAvatar}}" alt="">
+        <img ng-src="{{vm.model.userAvatar}}" alt="">
     </div>
+    <div>{{ vm.model.message }}</div>
 
 </div>
 </body>

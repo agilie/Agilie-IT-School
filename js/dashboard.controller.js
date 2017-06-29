@@ -13,7 +13,8 @@
         let vm = this;
 
         vm.model = {
-            userAvatar: User.avatarUrl()
+            userAvatar: User.avatarUrl(),
+            message: 'Hello World'
         }
     }
 
