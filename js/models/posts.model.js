@@ -11,7 +11,11 @@ function Post($http) {
     };
 
     function getAll() {
-        return $http.get('https://jsonplaceholder.typicode.com/posts')
+        return $http(
+            {
+                method: "GET",
+                url: 'https://jsonplaceholder.typicode.com/posts'
+            });
     }
 
     return post;
