@@ -1,10 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        h3 {
+            background-color: aqua;
+        }
+
+        div#like-input {
+            display: block;
+        }
+
+        div#like-input {
+            -webkit-appearance: textfield;
+            background-color: white;
+            -webkit-rtl-ordering: logical;
+            user-select: text;
+            cursor: auto;
+            padding: 1px;
+            border-width: 2px;
+            border-style: inset;
+            border-color: initial;
+            border-image: initial;
+        }
+
+        div#like-input {
+            text-rendering: auto;
+            color: initial;
+            letter-spacing: normal;
+            word-spacing: normal;
+            text-transform: none;
+            text-indent: 0px;
+            text-shadow: none;
+            display: inline-block;
+            text-align: start;
+            margin: 0em;
+            font: 11px system-ui;
+        }
+
+        div#like-input {
+            -webkit-writing-mode: horizontal-tb;
+        }
+
+    </style>
     <meta charset="UTF-8">
     <title>Custom Elements</title>
+    <script>
+        var CompProto = Object.create(HTMLElement.prototype);
+
+        CompProto.createdCallback = function() {
+            this.innerHTML = '<h3>My Template</h3>';
+            this.onclick = function() {
+                alert('Hello');
+            }
+        };
+
+        document.registerElement('my-header', {
+            prototype: CompProto
+        });
+
+
+        var ShadowProto = Object.create(HTMLElement.prototype);
+
+        ShadowProto.createdCallback = function() {
+            var shadow = this.createShadowRoot();
+            shadow.innerHTML = '<h3>My Template</h3>';
+        };
+
+        document.registerElement('shadow-header', {
+            prototype: ShadowProto
+        });
+
+    </script>
+
+    <link rel="import" href="my-header.html">
+
 </head>
 <body>
+<template id="my-template">
+    <style>
+        h1 {
+            color: orange;
+        }
+    </style>
+    <h1>My template</h1>
+</template>
+
+<script>
+    var TemplatedProto = Object.create(HTMLElement.prototype);
+
+    TemplatedProto.createdCallback = function () {
+        var template = document.querySelector('#my-template');
+        var clone = document.importNode(template.content, true);
+        this.createShadowRoot().appendChild(clone);
+    };
+
+    document.registerElement('tmpl-header', {
+        prototype: TemplatedProto
+    });
+</script>
+
+<my-header></my-header>
+<my-header></my-header>
+
+<input type="date">
+<div id="like-input" style="width: 125px;" contenteditable="true"></div>
+
+<shadow-header></shadow-header>
+<shadow-header></shadow-header>
+
+<tmpl-header></tmpl-header>
+<tmpl-header></tmpl-header>
+
+<tmpl-header-outside></tmpl-header-outside>
+<tmpl-header-outside></tmpl-header-outside>
 
 </body>
 </html>
